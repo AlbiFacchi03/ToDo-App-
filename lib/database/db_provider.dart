@@ -33,6 +33,12 @@ class DBProvider{
     conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
+  Future<int> deleteTask(int id) async{
+    final db = await database;
+    return await db.rawDelete('DELETE FROM tasks WHERE id = ?',[id],);
+
+  }
+
   Future<dynamic> getTask() async{
     final db = await database;
     var res = await db.query("tasks");
