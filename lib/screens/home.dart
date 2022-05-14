@@ -96,16 +96,28 @@ class _HomePageState extends State<HomePage> {
 
                                       return Slidable(
                                         actionPane: SlidableDrawerActionPane(),
-                                        actionExtentRatio: 0.1,
+                                        actionExtentRatio: 0.2,
                                         secondaryActions: [
-                                          IconSlideAction(
-                                            color: Colors.black,
-                                            icon: Icons.check_circle,
-                                            onTap: () {
-                                              DBProvider.dataBase.deleteTask(tasksData
-                                                  .data[index]["id"]);
+                                          Container(
+                                            padding: EdgeInsets.symmetric(horizontal: 10),
+                                            width: 5,
+                                            height: 60,
+                                            decoration: BoxDecoration(
+                                              color: Colors.black,
+                                              borderRadius: BorderRadius.circular(25)
+                                            ),
+                                            child: IconSlideAction(
+                                              color: Colors.transparent,
+                                              icon: Icons.check_circle,
+                                              onTap: () {
+                                                DBProvider.dataBase.deleteTask(tasksData
+                                                    .data[index]["id"]);
 
-                                            },
+                                                print(index);
+                                                tasksData.data.removeAt(index);
+
+                                              },
+                                            ),
                                           ),
                                         ],
                                         child: Card(
